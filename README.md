@@ -4,18 +4,18 @@ Welcome to the **RecycleConnect** mobile app! The app is designed to promote sus
 
 ## ✨ Key Features 
 
-### 1. **Donate Articles** 💝
+1. **Donate Articles** 💝
 
-### 2. **Buy Articles** 💸
+2. **Buy Articles** 💸
 
-### 3. **User Profiles** 👤
+3. **User Profiles** 👤
 
-### 4. **Sustainability Focus** 🌍
+4. **Sustainability Focus** 🌍
  
-### 5. **Secure Authentication** 🔐
+5. **Secure Authentication** 🔐
 
 ## 🛠 Tech Stack  
 
-### - **Frontend** : Swift (iOS)
-### - **Backend** : Node.js (Express)
-### - **Database** : MongoDb
+- **Frontend** : Swift (iOS)
+- **Backend** : Node.js (Express)
+- **Database** : MongoDb
