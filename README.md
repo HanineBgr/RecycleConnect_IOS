@@ -1,4 +1,4 @@
-♻️♻️ # RecycleConnect Mobile App ♻️♻️
+# RecycleConnect Mobile App ♻️♻️
 
 Welcome to the **RecycleConnect** mobile app! The app is designed to promote sustainability and reduce waste by enabling users to **donate** or **buy** second-hand articles. It provides an easy and efficient platform for individuals and organizations to exchange goods while contributing to a circular economy. 📱
 
