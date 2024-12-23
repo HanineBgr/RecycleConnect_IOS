@@ -26,7 +26,7 @@ struct SignUpView: View {
                 
                 Text("Sign Up ")
                     .font(.customfont(.semibold, fontSize: 26))
-                    .foregroundColor(Fonts.darkGreen)
+                    .foregroundColor(Fonts.black)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 4)
                 

@@ -4,8 +4,7 @@ struct OnBoardingView: View {
     var body: some View {
         NavigationStack { // Use NavigationStack for SwiftUI navigation
             ZStack {
-                // Background image
-                Image("welcome")
+           Image("welcome")
                     .resizable()
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

@@ -1,196 +1,122 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var nearYouItems: [CharityItem] = [
-        CharityItem(image: "bag", title: "Top", description: "Zeineb Salah"),
-        CharityItem(image: "sofa", title: "Canapé", description: "Mourad Sabeur"),
-        CharityItem(image: "converse", title: "Black Converse", description: "Hanine Bouguerra")
+    let exclusiveProducts: [ProductModel] = [
+        ProductModel(dict: ["image": "sofa", "name": "Luxury Sofa", "unitValue": "3", "unitName": "pcs", "price": 200.99, "offerPrice": 150.99]),
+        ProductModel(dict: ["image": "table", "name": "Dining Table", "unitValue": "1", "unitName": "set", "price": 120.00, "offerPrice": 99.00]),
+        ProductModel(dict: ["image": "sofa", "name": "Stylish Lamp", "unitValue": "1", "unitName": "unit", "price": 30.00, "offerPrice": 25.00]),
+        ProductModel(dict: ["image": "chair", "name": "Comfort Chair", "unitValue": "2", "unitName": "pcs", "price": 80.00, "offerPrice": 65.00]),
+        ProductModel(dict: ["image": "carpet", "name": "Modern Carpet", "unitValue": "1", "unitName": "piece", "price": 50.00, "offerPrice": 40.00])
     ]
-    @State private var popularItems: [CharityItem] = [
-        CharityItem(image: "tel", title: "Téléphone", description: "IPRO mini"),
-        CharityItem(image: "tv", title: "Télévision", description: "TV condor 42 pouces"),
-        CharityItem(image: "sofa", title: "Canapé", description: "Canapé jamis utilisé")
+    
+    let bestSellingProducts: [ProductModel] = [
+        ProductModel(dict: ["image": "subscribe", "name": "Premium Subscription", "unitValue": "1", "unitName": "year", "price": 120.00, "offerPrice": 99.00]),
+        ProductModel(dict: ["image": "tv", "name": "Smart TV", "unitValue": "1", "unitName": "unit", "price": 500.00, "offerPrice": 450.00]),
+        ProductModel(dict: ["image": "headphones", "name": "Wireless Headphones", "unitValue": "1", "unitName": "unit", "price": 60.00, "offerPrice": 45.00]),
+        ProductModel(dict: ["image": "watch", "name": "Smart Watch", "unitValue": "1", "unitName": "unit", "price": 150.00, "offerPrice": 120.00]),
+        ProductModel(dict: ["image": "camera", "name": "Digital Camera", "unitValue": "1", "unitName": "unit", "price": 300.00, "offerPrice": 280.00])
     ]
-    @State private var events: [CharityEvent] = [
-        CharityEvent(image: "event", title: "Event 1", description: "Description 1"),
-        CharityEvent(image: "event", title: "Event 2", description: "Description 2")
-    ]
-
+    
     var body: some View {
         NavigationView {
-            VStack {
+            ZStack {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack {
-                            Image("profile")
+                    VStack {
+                        HStack(spacing: 10) {
+                            Image("u2")
                                 .resizable()
-                                .frame(width: 30, height: 30)
+                                .scaledToFill()
                                 .clipShape(Circle())
-
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text("Hi Hanine Bouguerra ")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                            }
-
+                                .frame(width: 40, height: 40)
+                            
+                            Text("Welcome Hanine 👋")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.black)
+                            
                             Spacer()
                         }
-                        .padding(.horizontal)
-
-                        HStack(spacing: 10) {
-                            ForEach(Category.allCases, id: \.self) { category in
-                                Button(action: {}) {
-                                    HStack(spacing: 5) {
-                                        Image(systemName: category.iconName)
-                                            .foregroundColor(category == .furniture ? .white : .gray)
-                                        Text(category.title)
-                                            .font(.subheadline)
-                                            .fontWeight(.medium)
-                                            .foregroundColor(category == .furniture ? .white : .gray)
-                                    }
-                                    .padding(.vertical, 8)
-                                    .padding(.horizontal, 3)
-                                    .background(category == .furniture ? Fonts.darkGreen : Color(.systemGray6))
-                                    .clipShape(Capsule())
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-
-                        VStack(alignment: .leading, spacing: 10) {
+                        .padding(.top, 60)
+                        .padding(.horizontal, 20)
+                        
+                        // Search Bar
+                        SearchTextField(placholder: "Search Store", txt: .constant(""))
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                        
+                        Spacer().frame(height: 5)
+                        
+                        ZStack {
+                            Image("CTA")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 125)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 20)
+                            
                             HStack {
-                                Text("Near You")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                Spacer()
-                                Button(action: {}) {
-                                    Text("View All")
-                                        .font(.footnote)
-                                        .foregroundColor(Fonts.darkGreen)
-                                }
-                            }
-                            .padding(.horizontal)
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 16) {
-                                    ForEach(nearYouItems) { item in
-                                        NavigationLink(destination: ArticlesDetailsView()) {
-                                            CharityItemView(item: item)
-                                        }
+                                VStack(alignment: .leading) {
+                                    Text("You have items that you\ndon’t need anymore?")
+                                        .font(.system(size: 18, weight: .semibold))
+                                        .foregroundColor(.black)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(.leading, 15)
+                                    
+                                    Button(action: {
+                                        print("Explore button tapped")
+                                    }) {
+                                        Text("Explore")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .padding(.vertical, 6)
+                                            .padding(.horizontal, 16)
+                                            .background(Color(#colorLiteral(red: 0.35, green: 0.58, blue: 0.54, alpha: 1)))
+                                            .cornerRadius(25)
+                                            .padding(.leading, 15)
                                     }
+                                    .padding(.top, 8)
                                 }
-                                .padding(.horizontal)
-                            }
-                        }
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Text("Popular")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
+                                
                                 Spacer()
-                                Button(action: {}) {
-                                    Text("View All")
-                                        .font(.footnote)
-                                        .foregroundColor(Fonts.darkGreen)
-                                }
+                                
+                                Image("explore")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 90, height: 100)
+                                    .padding(.trailing, 18)
+                                    .offset(y: 0)
                             }
-                            .padding(.horizontal)
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 16) {
-                                    ForEach(popularItems) { item in
-                                        NavigationLink(destination: ArticlesDetailsView()) {
-                                            CharityItemView(item: item)
-                                        }
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
+                            .padding(.horizontal, 20)
                         }
+                        .frame(height: 135)
+                        .padding(.top, 5)
+                        
+                        Spacer().frame(height: 20)
+                        
+                        // Exclusive Offers Section
+                        SectionTitleAll(title: "Exclusive Offer", titleAll: "See All") {}
+                            .padding(.horizontal, 20)
+                        
+                       
+                        // Best Selling Section
+                        SectionTitleAll(title: "Best Selling", titleAll: "See All") {}
+                            .padding(.horizontal, 20)
+                        
+                     
                     }
-                    .padding(.vertical)
                 }
-
-                CustomToolbar()
-                    .frame(height: 70)
             }
-            .navigationBarItems(leading: Text("Home")
-                                        .font(.headline)
-                                        .bold(),
-                                trailing: Image(systemName: "bell.fill"))
-            .navigationViewStyle(StackNavigationViewStyle())
-        }
-    }
-}
-
-struct CharityItem: Identifiable {
-    let id = UUID()
-    let image: String
-    let title: String
-    let description: String
-}
-
-struct CharityEvent: Identifiable {
-    let id = UUID()
-    let image: String
-    let title: String
-    let description: String
-}
-
-struct CharityItemView: View {
-    let item: CharityItem
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Image(item.image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 140, height: 140)
-                .cornerRadius(12)
-            Text(item.title)
-                .font(.subheadline)
-                .fontWeight(.bold)
-            Text(item.description)
-                .font(.caption)
-                .foregroundColor(.gray)
-        }
-    }
-}
-
-struct CharityEventView: View {
-    let event: CharityEvent
-
-    var body: some View {
-        Image(event.image)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 300, height: 150)
-            .cornerRadius(15)
-    }
-}
-
-enum Category: CaseIterable {
-    case furniture, clothes, shoes, other
-
-    var title: String {
-        switch self {
-        case .furniture: return "Furniture"
-        case .clothes: return "Clothes"
-        case .shoes: return "Shoes"
-        case .other: return "Other"
+            .ignoresSafeArea()
         }
     }
 
-    var iconName: String {
-        switch self {
-        case .furniture: return "bed.double.fill"
-        case .clothes: return "tshirt.fill"
-        case .shoes: return "shoeprints.fill"
-        case .other: return "ellipsis.circle.fill"
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            HomeView()
         }
     }
+
+}
 }
 
-#Preview {
-    HomeView()
-}
