@@ -26,4 +26,5 @@ Welcome to the **RecycleConnect** mobile app! The app is designed to promote sus
 <img width="336" alt="Screenshot 2024-12-23 at 14 06 59" src="https://github.com/user-attachments/assets/c24ae8cd-f084-46a7-b635-68db1f144278" />
 <img width="336" alt="Screenshot 2024-12-23 at 14 30 06" src="https://github.com/user-attachments/assets/46a7a136-c08b-4c0a-bd15-66f362448596" />
 <img width="336" alt="Screenshot 2024-12-23 at 14 30 42" src="https://github.com/user-attachments/assets/b3a8da09-7b02-4997-8dbf-401c2e1ce119" />
+<img width="304" alt="Screenshot 2024-12-23 at 15 19 26" src="https://github.com/user-attachments/assets/42e758c4-cfb8-42bd-ac7d-a2aea899bf01" />
 
